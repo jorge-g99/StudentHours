@@ -4,7 +4,12 @@ import '../services/database_service.dart';
 
 class HourProvider with ChangeNotifier {
   final List<HourEntry> _entries = [];
-  final DatabaseService _dbService = DatabaseService();
+  DatabaseService _dbService = DatabaseService();
+
+  // Método para permitir injeção em testes
+  void setDbService(DatabaseService dbService) {
+    _dbService = dbService;
+  }
 
   HourProvider() {
     // Carrega as entradas salvas ao inicializar
